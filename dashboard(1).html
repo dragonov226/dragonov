@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DRAGONOV Admin</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body class="hidden" id="admin-body"><div class="admin-layout"><aside class="sidebar"><a class="brand" href="../index.html">DRAGONOV<span>.</span></a><a class="active" href="dashboard.html">Dashboard</a><a href="#content">Manage content</a><a href="#invite">Invite admin</a><a href="#members">Administrators</a><a href="../index.html">View website</a></aside>
+<main class="admin-main"><div class="topbar"><div><div class="eyebrow">CONTROL CENTER</div><h1>Admin dashboard</h1><p class="muted" id="whoami"></p></div><button class="button" id="logout">Log out</button></div>
+<div class="stats"><div class="stat"><span class="muted">Published items</span><strong id="published-count">—</strong></div><div class="stat"><span class="muted">Draft items</span><strong id="draft-count">—</strong></div><div class="stat"><span class="muted">Your role</span><strong id="role">—</strong></div></div>
+<section class="panel" id="content"><div class="toolbar"><h2>Manage events, seminars, courses & quizzes</h2></div>
+<form id="content-form"><input type="hidden" id="item-id"><div class="form-grid">
+<div class="field"><label>Content type</label><select id="kind"><option value="event">Event / Seminar / Webinar</option><option value="course">Course</option><option value="quiz">Quiz</option></select></div>
+<div class="field"><label>Category / label</label><input id="category" placeholder="e.g. Webinar, Mechanical, Science"></div>
+<div class="field wide"><label>Title</label><input id="title" required maxlength="160"></div>
+<div class="field wide"><label>Description</label><textarea id="description"></textarea></div>
+<div class="field"><label>Date & time (optional)</label><input id="event-date" type="datetime-local"></div>
+<div class="field"><label>Location (optional)</label><input id="location" placeholder="Online / Venue"></div>
+<div class="field wide"><label>Registration / Google Form / Quiz URL</label><input id="link-url" type="url" placeholder="https://forms.gle/..." ></div>
+<div class="field"><label><input id="published" type="checkbox" style="width:auto"> Publish on website</label></div>
+</div><button class="button" type="submit">Save content</button> <button class="small-btn" type="button" id="reset-form">Clear</button><p id="content-message" class="muted"></p></form>
+<div class="toolbar"><h2>Existing content</h2><button class="small-btn" id="refresh">Refresh</button></div><div class="table-wrap"><table><thead><tr><th>Title</th><th>Type</th><th>Status</th><th>Actions</th></tr></thead><tbody id="content-rows"></tbody></table></div></section>
+<section class="panel" id="invite" style="margin-top:22px"><h2>Invite an administrator</h2><p class="muted">Only the primary owner or an active admin can invite. The invite email is sent by a server-side Supabase Edge Function.</p><form id="invite-form"><div class="field"><label>Invite email</label><input id="invite-email" type="email" required placeholder="person@example.com"></div><button class="button" type="submit">Send admin invitation</button><p id="invite-message" class="muted"></p></form></section>
+<section class="panel" id="members" style="margin-top:22px"><h2>Administrator accounts</h2><div class="table-wrap"><table><thead><tr><th>Email</th><th>Role</th><th>Status</th><th>Action</th></tr></thead><tbody id="member-rows"></tbody></table></div></section>
+</main></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="../assets/config.js"></script><script src="dashboard.js"></script></body></html>
